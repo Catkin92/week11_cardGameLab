@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Deck {
 
@@ -22,5 +23,22 @@ public class Deck {
                 this.cards.add(card);
             }
         }
+    }
+
+    public boolean linearSearch(Card searchCard) {
+        for (Card card : this.cards) {
+            if(card == searchCard) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Card findCard(int index) {
+        return this.cards.get(index);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(this.cards);
     }
 }
