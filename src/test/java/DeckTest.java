@@ -1,18 +1,26 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class DeckTest {
 
     private Deck deck;
     private Player player;
+    private Player player2;
+    private ArrayList<Player> players;
 
     @Before
     public void before() {
         deck = new Deck();
         deck.populateDeck();
         player = new Player();
+        player2 = new Player();
+        players = new ArrayList<Player>();
+        players.add(player);
+        players.add(player2);
     }
 
     @Test
@@ -49,9 +57,10 @@ public class DeckTest {
 
     @Test
     public void canDealCard() {
-        deck.dealCard(player);
-        assertEquals(51, deck.countCards());
+        deck.dealCard(players);
+        assertEquals(50, deck.countCards());
         assertEquals(1, player.countHand());
+        assertEquals(1, player2.countHand());
     }
 
 }

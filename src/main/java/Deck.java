@@ -42,8 +42,13 @@ public class Deck {
         Collections.shuffle(this.cards);
     }
 
-    public void dealCard(Player player) {
-        Card dealtCard = this.cards.remove(0);
-        player.addCard(dealtCard);
+    public void dealCard(ArrayList<Player> players) {
+
+        for (Player player : players) {
+
+            Card dealtCard = this.cards.remove(0);
+            player.addCard(dealtCard);
+        }
+
     }
 }

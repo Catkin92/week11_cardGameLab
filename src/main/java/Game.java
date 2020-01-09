@@ -18,27 +18,31 @@ public class Game {
         this.players.add(player);
     }
 
-    public Player playGame() {
-        this.deck.populateDeck();
-        this.deck.shuffle();
-
-        for (Player player : this.players) {
-            this.deck.dealCard(player);
-        }
-
+    public Player calculateWinner() {
         int cardValue = 0;
         Player winner = null;
 
         for (Player player : this.players) {
             int currentValue = player.getCard().getRank().getValue();
-           if ( currentValue > cardValue) {
+            if (currentValue > cardValue) {
                 cardValue = currentValue;
                 winner = player;
-           }
-           else if (currentValue == cardValue) {
-               playGame();
-           }
+            } else if (currentValue == cardValue) {
+                calculateWinner();
+            }
+            return winner;
         }
+    }
+
+
+    public Player playGame() {
+        this.deck.populateDeck();
+        this.deck.shuffle();
+
+        this.deck.dealCard(this.players);
+
+        Player winner = calculateWinner();
+
         return winner;
     }
 }
