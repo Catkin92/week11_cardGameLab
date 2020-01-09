@@ -21,4 +21,9 @@ public class CardTest {
     public void hasRankType() {
         assertEquals(RankType.ACE, card.getRank());
     }
+
+    @Test
+    public void cardHasValue() {
+        assertEquals(12, RankType.QUEEN.getValue());
+    }
 }

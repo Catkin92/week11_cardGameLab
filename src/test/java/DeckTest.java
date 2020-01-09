@@ -45,7 +45,12 @@ public class DeckTest {
         Card card4 = deck.findCard(25);
         assertNotSame(card, card2);
         assertNotSame(card3, card4);
+    }
 
+    @Test
+    public void canDealCard() {
+        deck.dealCard();
+        assertEquals(51, deck.countCards());
     }
 
 }
